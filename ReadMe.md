@@ -3,7 +3,7 @@
 The goal of this package is to provide a relatively easy-to-use set of functions to develop your own temporal neural networks (TNNs) in PyTorch.  The implementation of TNNs in PyTorch was adapted from the original convolutional recurrent neural network (ConvRNN) implementation in Tensorflow (see [here](https://github.com/neuroailab/convrnns)).  The development of this package is an ongoing effort and we welcome contributions from the community aimed not only at increasing functionality, but also at improving usability.
 
 We visualize how a temporal neural network (TNN) is constructed, unrolled using PyTorchTNN, and how TNNs can serve as a component of the Encoder-Attender-Decoder (EAD) architecture proposed in our [tactile-whisking](https://arxiv.org/abs/2505.18361) paper. 
-![ptnn](https://github.com/user-attachments/assets/b8a75655-2ba8-41a6-9d42-bb5f31fc385f)
+![ptnn](visualizations/ptnn.gif)
 
 
 ## Components of temporal neural networks
@@ -14,7 +14,7 @@ Temporal neural networks (TNNs) are neural networks that incorporate local recur
 
 Below, is a schematic of how this biological temporal unrolling occurs for an architecture that is purely feedforward (upper panel) and for an architecture that consists of a single feedback connection (lower panel).  Note that information processing for a single timepoint is described by each row in the schematic.  
 
-<img width="722" height="539" alt="ptnn_unroll" src="https://github.com/user-attachments/assets/e72f8486-d58c-40e9-9021-3301074a9152" />
+![ptnn_unroll](visualizations/ptnn_unroll.png)
 
 
 ### Terminology
@@ -156,7 +156,7 @@ trainer.fit(model=tnn_model, datamodule=data_module)
 
 We introduce the Encoder-Attender-Decoder (EAD) architecture, as illustrated in the figure below, where the encoder, attender, and decoder sequentially process the input, and can be configured and implemented by different kinds of models. 
 
-<img width="949" height="624" alt="EAD_architecture" src="https://github.com/user-attachments/assets/d2363a82-71b4-467b-a493-6c6a75080d0e" />
+![ead](visualizations/EAD_architecture.png)
 
 
 We provide a simple realization of the EAD architecture below, where the encoder, attender, and decoder are implemented by the TNN model (unrolled ResNet-18), self-attention, and a linear layer. The full implementation is provided in [`EAD_example.py`](https://github.com/neuroagents-lab/PyTorchTNN/blob/main/EAD_example.py). For more details on the EAD architecture, **please refer to our [tactile-whisking](https://github.com/neuroagents-lab/2025-tactile-whisking/tree/main/tactile-nn/tactile_model/enc_att_dec) codebase**.
