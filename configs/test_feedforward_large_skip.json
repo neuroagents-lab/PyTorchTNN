@@ -1,0 +1,76 @@
+{
+    "nodes": [
+        {
+            "name": "conv1",
+            "shape_from": null,
+            "harbor_policy": {
+                "name": "ResizeConcat"
+            },
+            "pre_memory": {
+                "name": "Conv2dCell",
+                "out_channels": 2,
+                "ksize": [3, 3],
+                "stride": 1,
+                "padding": 1
+            },
+            "recurrent_cell": {
+                "name": "IdentityCell"
+            },
+            "post_memory": {
+                "name": "Identity"
+            },
+            "out_channels": 2
+        },
+        {
+            "name": "conv2",
+            "shape_from": "conv1",
+            "harbor_policy": {
+                "name": "ResizeConcat"
+            },
+            "pre_memory": {
+                "name": "Conv2dCell",
+                "out_channels": 2,
+                "ksize": [3, 3],
+                "stride": 1,
+                "padding": 1
+            },
+            "recurrent_cell": {
+                "name": "IdentityCell"
+            },
+            "post_memory": {
+                "name": "Identity"
+            },
+            "out_channels": 2
+        },
+        {
+            "name": "output",
+            "shape_from": "conv2",
+            "harbor_policy": {
+                "name": "ResizeConcat"
+            },
+            "pre_memory": {
+                "name": "Conv2dCell",
+                "out_channels": 1,
+                "ksize": [3, 3],
+                "stride": 1,
+                "padding": 1
+            },
+            "recurrent_cell": {
+                "name": "IdentityCell"
+            },
+            "post_memory": {
+                "name": "Identity"
+            },
+            "out_channels": 1
+        }
+    ],
+    "edges": [
+        {"from": "conv1", "to": "conv2"},
+        {"from": "conv1", "to": "output"},
+        {"from": "conv2", "to": "output"}
+    ],
+    "input_nodes": ["conv1"],
+    "output_node": "output",
+    "input_shape": [3, 6, 6],
+    "num_timesteps": 3
+}

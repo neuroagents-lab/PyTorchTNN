@@ -1,0 +1,191 @@
+{
+  "nodes": [
+    {
+      "name": "conv1",
+      "shape_from": null,
+      "harbor_policy": {
+        "name": "ResizeConcat"
+      },
+      "pre_memory": {
+        "name": "Conv2dCell",
+        "out_channels": 64,
+        "ksize": [7, 7],
+        "stride": 2,
+        "padding": 3,
+        "init_dict": null,
+        "bias": 0.0,
+        "activation": "ELU",
+        "batchnorm": null
+      },
+      "recurrent_cell": {
+        "name": "IdentityCell"
+      },
+      "post_memory": {
+        "name": "MaxPool",
+        "ksize": 2,
+        "stride": 2,
+        "padding": 0
+      },
+      "out_channels": 64
+    },
+    {
+      "name": "conv2",
+      "shape_from": "conv1",
+      "harbor_policy": {
+        "name": "ResizeConcat"
+      },
+      "pre_memory": {
+        "name": "Conv2dCell",
+        "out_channels": 128,
+        "ksize": [3, 3],
+        "stride": 1,
+        "padding": "same",
+        "init_dict": null,
+        "bias": 0.0,
+        "activation": "ELU",
+        "batchnorm": null
+      },
+      "recurrent_cell": {
+        "name": "IdentityCell"
+      },
+      "post_memory": {
+        "name": "MaxPool",
+        "ksize": 2,
+        "stride": 2,
+        "padding": 0
+      },
+      "out_channels": 128
+    },
+    {
+      "name": "conv3",
+      "shape_from": "conv2",
+      "harbor_policy": {
+        "name": "ResizeConcat"
+      },
+      "pre_memory": {
+        "name": "Conv2dCell",
+        "out_channels": 256,
+        "ksize": [3, 3],
+        "stride": 1,
+        "padding": "same",
+        "init_dict": null,
+        "bias": 0.0,
+        "activation": "ELU",
+        "batchnorm": null
+      },
+      "recurrent_cell": {
+        "name": "IntersectionRNNCell",
+        "input_in_channels": 256,
+        "out_channels": 256,
+        "ksize": [3, 3]
+      },
+      "post_memory": {
+        "name": "MaxPool",
+        "ksize": 2,
+        "stride": 2,
+        "padding": 0
+      },
+      "out_channels": 256
+    },
+    {
+      "name": "conv4",
+      "shape_from": "conv3",
+      "harbor_policy": {
+        "name": "ResizeConcat"
+      },
+      "pre_memory": {
+        "name": "Conv2dCell",
+        "out_channels": 256,
+        "ksize": [3, 3],
+        "stride": 1,
+        "padding": "same",
+        "init_dict": null,
+        "bias": 0.0,
+        "activation": "ELU",
+        "batchnorm": null
+      },
+      "recurrent_cell": {
+        "name": "IntersectionRNNCell",
+        "input_in_channels": 256,
+        "out_channels": 256,
+        "ksize": [3, 3]
+      },
+      "post_memory": {
+        "name": "MaxPool",
+        "ksize": 2,
+        "stride": 2,
+        "padding": 0
+      },
+      "out_channels": 256
+    },
+    {
+      "name": "conv5",
+      "shape_from": "conv4",
+      "harbor_policy": {
+        "name": "ResizeConcat"
+      },
+      "pre_memory": {
+        "name": "Conv2dCell",
+        "out_channels": 512,
+        "ksize": [3, 3],
+        "stride": 1,
+        "padding": "same",
+        "init_dict": null,
+        "bias": 0.0,
+        "activation": "ELU",
+        "batchnorm": null
+      },
+      "recurrent_cell": {
+        "name": "IntersectionRNNCell",
+        "input_in_channels": 512,
+        "out_channels": 512,
+        "ksize": [3, 3]
+      },
+      "post_memory": {
+        "name": "MaxPool",
+        "ksize": 2,
+        "stride": 2,
+        "padding": 0,
+        "ceil_mode": true
+      },
+      "out_channels": 512
+    },
+    {
+      "name": "imnetds",
+      "shape_from": "conv5",
+      "harbor_policy": {
+        "name": "ResizeConcat"
+      },
+      "pre_memory": {
+        "name": "Conv2dCell",
+        "out_channels": 1000,
+        "ksize": [2, 2],
+        "stride": 1,
+        "padding": "valid",
+        "init_dict": null,
+        "bias": 0.0,
+        "activation": null,
+        "batchnorm": null
+      },
+      "recurrent_cell": {
+        "name": "IdentityCell"
+      },
+      "post_memory": {
+        "name": "AdaptiveAvgPool",
+        "output_size": [1, 1]
+      },
+      "out_channels": 1000
+    }
+  ],
+  "edges": [
+    {"from": "conv1", "to": "conv2"},
+    {"from": "conv2", "to": "conv3"},
+    {"from": "conv3", "to": "conv4"},
+    {"from": "conv4", "to": "conv5"},
+    {"from": "conv5", "to": "imnetds"}
+  ],
+  "input_nodes": ["conv1"],
+  "output_node": "imnetds",
+  "input_shape": [3, 224, 224],
+  "num_timesteps": 16
+}
