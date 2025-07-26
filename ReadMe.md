@@ -101,6 +101,7 @@ The following RNNs are supported by PyTorchTNN under [recurrent_cells](https://g
 - [UGRNN](https://arxiv.org/pdf/1611.09913)
 - [IntersectionRNN](https://arxiv.org/pdf/1611.09913)
 - [ReciprocalGatedCell](https://proceedings.neurips.cc/paper/2018/file/6be93f7a96fed60c477d30ae1de032fd-Paper.pdf)
+- [vanilla RNN](https://github.com/neuroailab/convrnns/blob/master/convrnns/utils/cells.py#L248-L327)
 ## Training a temporal neural network
 
 We demonstrate how to train a TNN on ImageNet. Specifically, we choose the [ReciprocalGatedCell](https://proceedings.neurips.cc/paper/2018/file/6be93f7a96fed60c477d30ae1de032fd-Paper.pdf) as the recurrent module, and train a [6-layer TNN](https://github.com/neuroailab/convrnns/blob/master/convrnns/models/rgc_shallow.json) unrolling for 16 time steps.
