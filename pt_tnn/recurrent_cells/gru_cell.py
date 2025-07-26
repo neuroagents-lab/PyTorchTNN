@@ -73,12 +73,9 @@ class GRUCell(RecurrentCellBase):
             init_method(self.conv_ru.weight, **init_dict)
             init_method(self.conv_c.weight, **init_dict)
 
-        if use_bias:
-            if bias is not None:
-                init.constant_(self.conv_ru.bias, val=bias)
-                init.constant_(self.conv_c.bias, val=bias)
-            else:
-                init.constant_(self.conv_ru.bias, val=1.0)
+        if use_bias and bias is not None:
+            init.constant_(self.conv_ru.bias, val=bias)
+            init.constant_(self.conv_c.bias, val=bias)
 
         self.layernorm = layernorm
         if layernorm:
