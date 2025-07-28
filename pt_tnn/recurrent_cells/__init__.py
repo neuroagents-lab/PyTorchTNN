@@ -7,3 +7,4 @@ from .intersection_cell import *
 from .gru_cell import *
 from .lstm_cell import *
 from .reciprocal_gated_cell import *
+from .vanilla_rnn_cell import *
