@@ -73,16 +73,16 @@ class EncAttDec(nn.Module):
 
         return pred
 
-
-bs, T = 3, 10
-random_input = torch.rand(bs, T, 3, 224, 224)
-out_features = 100
-
-
-model = EncAttDec(
-    out_features=out_features,  # output dimension
-    n_times=T,  # number of unrolling steps in the TNN encoder
-)
-output = model(random_input)
-
-print(output.shape)  # (bs, out_features)
+if __name__ == "__main__":
+    bs, T = 3, 10
+    random_input = torch.rand(bs, T, 3, 224, 224)
+    out_features = 100
+    
+    
+    model = EncAttDec(
+        out_features=out_features,  # output dimension
+        n_times=T,  # number of unrolling steps in the TNN encoder
+    )
+    output = model(random_input)
+    
+    print(output.shape)  # (bs, out_features)
