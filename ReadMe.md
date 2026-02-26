@@ -2,7 +2,7 @@
 
 The goal of this package is to provide a relatively easy-to-use set of functions to develop your own temporal neural networks (TNNs) in PyTorch.  The implementation of TNNs in PyTorch was adapted from the original convolutional recurrent neural network (ConvRNN) implementation in Tensorflow (see [here](https://github.com/neuroailab/convrnns)).  The development of this package is an ongoing effort and we welcome contributions from the community aimed not only at increasing functionality, but also at improving usability.
 
-**Check out the Colab tutorial [here](https://colab.research.google.com/drive/11QuXuIwmAA_ULFHQ1QCRued1DObuyK0r).**
+**Check out the Colab notebook tutorial [here](https://colab.research.google.com/drive/11QuXuIwmAA_ULFHQ1QCRued1DObuyK0r).**
 
 We visualize bewow how a temporal neural network (TNN) is constructed, unrolled using PyTorchTNN, and how TNNs can serve as a component of the Encoder-Attender-Decoder (EAD) architecture proposed in our [tactile-whisking](https://arxiv.org/abs/2505.18361) paper. 
 ![ptnn](visualizations/ptnn.gif)
