@@ -4,7 +4,7 @@ The goal of this package is to provide a relatively easy-to-use set of functions
 
 **Check out the Colab notebook tutorial [here](https://colab.research.google.com/drive/11QuXuIwmAA_ULFHQ1QCRued1DObuyK0r).**
 
-We visualize bewow how a temporal neural network (TNN) is constructed, unrolled using PyTorchTNN, and how TNNs can serve as a component of the Encoder-Attender-Decoder (EAD) architecture proposed in our [tactile-whisking](https://arxiv.org/abs/2505.18361) paper. 
+We visualize below how a temporal neural network (TNN) is constructed, unrolled using PyTorchTNN, and how TNNs can serve as a component of the Encoder-Attender-Decoder (EAD) architecture proposed in our [tactile-whisking](https://arxiv.org/abs/2505.18361) paper. 
 ![ptnn](visualizations/ptnn.gif)
 
 
