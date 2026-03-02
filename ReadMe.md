@@ -98,10 +98,10 @@ output, activations = temporal_graph_resnet18(
 The following RNNs are supported by PyTorchTNN under [recurrent_cells](https://github.com/neuroagents-lab/PyTorchTNN/tree/main/pt_tnn/recurrent_cells).
 - [GRU](https://arxiv.org/pdf/1412.3555)
 - [LSTM](https://ieeexplore.ieee.org/abstract/document/6795963)
-- [TimeDecay](https://proceedings.neurips.cc/paper/2018/file/6be93f7a96fed60c477d30ae1de032fd-Paper.pdf)
+- [TimeDecay](https://proceedings.neurips.cc/paper/2018/file/6be93f7a96fed60c477d30ae1de032fd-Paper.pdf) (e.g., [test_timedecay_shallow.json](https://github.com/neuroagents-lab/PyTorchTNN/blob/main/configs/test_timedecay_shallow.json), [test_timedecay_intermediate.json](https://github.com/neuroagents-lab/PyTorchTNN/blob/main/configs/test_timedecay_intermediate.json), or just purely feedforward: [test_ff_intermediate.json](https://github.com/neuroagents-lab/PyTorchTNN/blob/main/configs/test_ff_intermediate.json)!)
 - [UGRNN](https://arxiv.org/pdf/1611.09913)
-- [IntersectionRNN](https://arxiv.org/pdf/1611.09913)
-- [ReciprocalGatedCell](https://proceedings.neurips.cc/paper/2018/file/6be93f7a96fed60c477d30ae1de032fd-Paper.pdf)
+- [IntersectionRNN](https://arxiv.org/pdf/1611.09913) (e.g., [test_inter_shallow.json](https://github.com/neuroagents-lab/PyTorchTNN/blob/main/configs/test_inter_shallow.json))
+- [ReciprocalGatedCell](https://proceedings.neurips.cc/paper/2018/file/6be93f7a96fed60c477d30ae1de032fd-Paper.pdf) (e.g., [test_rgc_shallow.json](https://github.com/neuroagents-lab/PyTorchTNN/blob/main/configs/test_rgc_shallow.json))
 - [vanilla RNN](https://github.com/neuroailab/convrnns/blob/master/convrnns/utils/cells.py#L248-L327)
 ## Training a temporal neural network
 
